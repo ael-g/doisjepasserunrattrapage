@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import React, { useEffect, useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 
