@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import {
+  BrowserRouter as Router,
+} from "react-router-dom";
 import TextField from '@material-ui/core/TextField';
 
 import './App.css';
@@ -20,6 +23,7 @@ function App(props) {
   }, []);
 
   return (
+    <Router basename={process.env.PUBLIC_URL}>
     <div className="App">
       {year ? 
         year['semestres'].map((semestre) => <div>{
@@ -40,6 +44,7 @@ function App(props) {
         </div>)
       :<></> }
     </div>
+    </Router>
   );
 }
 
