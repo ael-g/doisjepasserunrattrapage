@@ -1,25 +1,50 @@
 import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
+import TextField from '@material-ui/core/TextField';
+
 import './App.css';
 
-function App() {
+function App(props) {
+  const [year, setYear] = useState(0);
+  // setYear({
+  //   semestres: []
+  // });
+
+  useEffect(() => {
+    console.log('Fetching things');
+    fetch("/diploma/nanterre-l1-histoiredelart-ead.json")
+      .then(res => res.json())
+      .then(
+        (result) => {
+            setYear(result);
+        })
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {year ? 
+        year['semestres'].map((semestre) => <div>{
+            semestre['name']
+          }{ 
+            semestre['ue'].map((ue) => 
+            <div>
+              {ue['name']}
+              {
+                ue['ec'].map((ec) =>
+                <div>
+                  {ec['name']} - {ec['credit']} <TextField id="outlined-basic" variant="outlined" />
+                </div>
+                )
+              }
+            </div>)
+          }
+        </div>)
+      :<></> }
     </div>
   );
 }
 
+// {
+//   
+//   }
 export default App;

@@ -1,0 +1,109 @@
+{
+    "semestres": [
+      {
+        "name": "Semestre 1 Licence Histoire de l'art EAD",
+        "ue": [
+          {
+            "name": "Enseignements complémentaires",
+            "ec": [
+              {
+                "name": "Initiation à l'histoire contemporaine",
+                "credit": 4.5
+              },
+              {
+                "name": "Initiation à l'histoire moderne",
+                "credit": 4.5
+              }
+            ]
+          },
+          {
+            "name": "Enseignements fondamentaux",
+            "ec": [
+              {
+                "name": "Initiation à l'histoire de l'art contemporain",
+                "credit": 4.5
+              },
+              {
+                "name": "Methodologie générale à l'histoire de l'art et archéologie",
+                "credit": 3
+              },
+              {
+                "name": "Initiation histoire de l'art et archéo antiques",
+                "credit": 4.5
+              }
+            ]
+          },
+          {
+            "name": "Compétences linguistiques",
+            "ec": [
+              {
+                "name": "anglais LANSAD C1 S1 EAD",
+                "credit": 3
+              }
+            ]
+          },
+          {
+            "name": "Compétences transversales",
+            "ec": [
+              {
+                "name": "Méthodologie du travail universitaire",
+                "credit": 1.5
+              },
+              {
+                "name": "Maîtrise Français Ecrit - Niveau 2",
+                "credit": 1.5
+              },
+              {
+                "name": "Grands repères",
+                "credit": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Semestre 2 Licence Histoire de l'art EAD",
+        "ue": [
+          {
+            "name": "Enseignements complémentaires S2",
+            "ec": [
+              {
+                "name": "Initiation histoire ancienne",
+                "credit": 4.5
+              },
+              {
+                "name": "Initiation histoire médiévale",
+                "credit": 4.5
+              }
+            ]
+          },
+          {
+            "name": "Enseignements fondamentaux S2",
+            "ec": [
+              {
+                "name": "Méthodologie générale du commentaire d'oeuvre",
+                "credit": 3
+              },
+              {
+                "name": "Initiation à l'histoire de l'art moderne",
+                "credit": 4.5
+              },
+              {
+                "name": "initiation à l'histoire art et archéo du Moyen Age",
+                "credit": 4.5
+              }
+            ]
+          },
+          {
+            "name": "Compétences linguistiques S2",
+            "ec": [
+              {
+                "name": "anglais LANSAD C1 S2 EAD",
+                "credit": 3
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
