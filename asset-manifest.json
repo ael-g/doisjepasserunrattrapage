@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/doisjepasserunrattrapage/static/css/main.8c8b27cf.chunk.css",
-    "main.js": "/doisjepasserunrattrapage/static/js/main.37282c51.chunk.js",
-    "main.js.map": "/doisjepasserunrattrapage/static/js/main.37282c51.chunk.js.map",
+    "main.js": "/doisjepasserunrattrapage/static/js/main.fe673457.chunk.js",
+    "main.js.map": "/doisjepasserunrattrapage/static/js/main.fe673457.chunk.js.map",
     "runtime-main.js": "/doisjepasserunrattrapage/static/js/runtime-main.750bf0c4.js",
     "runtime-main.js.map": "/doisjepasserunrattrapage/static/js/runtime-main.750bf0c4.js.map",
     "static/js/2.972b450e.chunk.js": "/doisjepasserunrattrapage/static/js/2.972b450e.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.750bf0c4.js",
     "static/js/2.972b450e.chunk.js",
     "static/css/main.8c8b27cf.chunk.css",
-    "static/js/main.37282c51.chunk.js"
+    "static/js/main.fe673457.chunk.js"
   ]
 }
