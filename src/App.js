@@ -11,10 +11,9 @@ function App(props) {
   // setYear({
   //   semestres: []
   // });
-
   useEffect(() => {
     console.log('Fetching things');
-    fetch("/diploma/nanterre-l1-histoiredelart-ead.json")
+    fetch(`${process.env.PUBLIC_URL}/diploma/nanterre-l1-histoiredelart-ead.json`)
       .then(res => res.json())
       .then(
         (result) => {
