@@ -1,61 +1,87 @@
 {
-    "semestres": [
+    "name": "L1",
+    "type": "Annee",
+    "items": [
       {
         "name": "Semestre 1 Licence Histoire de l'art EAD",
-        "ue": [
+        "type": "Semestre",
+        "items": [
           {
             "name": "Enseignements complémentaires",
-            "ec": [
+            "type": "UE",
+            "items": [
               {
                 "name": "Initiation à l'histoire contemporaine",
-                "credit": 4.5
+                "type": "EC",
+                "credit": 4.5,
+                "value": 9
               },
               {
                 "name": "Initiation à l'histoire moderne",
-                "credit": 4.5
+                "type": "EC",
+                "credit": 4.5,
+                "value": 12
               }
             ]
           },
           {
             "name": "Enseignements fondamentaux",
-            "ec": [
+            "type": "UE",
+            "items": [
               {
                 "name": "Initiation à l'histoire de l'art contemporain",
-                "credit": 4.5
+                "type": "EC",
+                "credit": 4.5,
+                "value": 11
               },
               {
                 "name": "Methodologie générale à l'histoire de l'art et archéologie",
-                "credit": 3
+                "type": "EC",
+                "credit": 3,
+                "value": 16
               },
               {
                 "name": "Initiation histoire de l'art et archéo antiques",
-                "credit": 4.5
+                "type": "EC",
+                "credit": 4.5,
+                "value": 13
               }
             ]
           },
           {
             "name": "Compétences linguistiques",
-            "ec": [
+            "type": "UE",
+            "items": [
               {
                 "name": "anglais LANSAD C1 S1 EAD",
-                "credit": 3
+                "type": "EC",
+                "credit": 3,
+                "value": 0
               }
             ]
           },
           {
             "name": "Compétences transversales",
-            "ec": [
+            "type": "UE",
+            "items": [
               {
                 "name": "Méthodologie du travail universitaire",
-                "credit": 1.5
+                "type": "EC",
+                "credit": 1.5,
+                "value": 10,
+                "disp": true
               },
               {
                 "name": "Maîtrise Français Ecrit - Niveau 2",
-                "credit": 1.5
+                "type": "EC",
+                "credit": 1.5,
+                "value": 17.84
               },
               {
                 "name": "Grands repères",
-                "credit": 3
+                "type": "EC",
+                "credit": 3,
+                "value": 18.3
               }
             ]
           }
@@ -63,43 +89,84 @@
       },
       {
         "name": "Semestre 2 Licence Histoire de l'art EAD",
-        "ue": [
+        "type": "Semestre",
+        "items": [
           {
             "name": "Enseignements complémentaires S2",
-            "ec": [
+            "type": "UE",
+            "items": [
               {
                 "name": "Initiation histoire ancienne",
-                "credit": 4.5
+                "type": "EC",
+                "credit": 4.5,
+                "value": 14
               },
               {
                 "name": "Initiation histoire médiévale",
-                "credit": 4.5
+                "type": "EC",
+                "credit": 4.5,
+                "value": 18
               }
             ]
           },
           {
             "name": "Enseignements fondamentaux S2",
-            "ec": [
+            "type": "UE",
+            "items": [
               {
                 "name": "Méthodologie générale du commentaire d'oeuvre",
-                "credit": 3
+                "type": "EC",
+                "credit": 3,
+                "value": 10
               },
               {
                 "name": "Initiation à l'histoire de l'art moderne",
-                "credit": 4.5
+                "type": "EC",
+                "credit": 4.5,
+                "value": 12
               },
               {
                 "name": "initiation à l'histoire art et archéo du Moyen Age",
-                "credit": 4.5
+                "type": "EC",
+                "credit": 4.5,
+                "value": 11
               }
             ]
           },
           {
             "name": "Compétences linguistiques S2",
-            "ec": [
+            "type": "UE",
+            "items": [
               {
                 "name": "anglais LANSAD C1 S2 EAD",
-                "credit": 3
+                "type": "EC",
+                "credit": 3,
+                "value": 11
+              }
+            ]
+          },
+          {
+            "name": "Projets et expériences S2",
+            "type": "UE",
+            "items": [
+              {
+                "name": "Connaissance de soi et des métiers",
+                "type": "EC",
+                "credit": 3,
+                "value": 12
+              }
+            ]
+          },
+          {
+            "name": "Compétences transversales S2",
+            "type": "UE",
+            "items": [
+              {
+                "name": "Grands repères 2",
+                "type": "EC",
+                "credit": 3,
+                "disp": true,
+                "value": 10
               }
             ]
           }
