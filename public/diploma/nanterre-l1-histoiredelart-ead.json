@@ -1,5 +1,5 @@
 {
-    "name": "L1",
+    "name": "L1 Licence Histoire de l'art EAD",
     "type": "Annee",
     "items": [
       {
@@ -27,6 +27,7 @@
           {
             "name": "Enseignements fondamentaux",
             "type": "UE",
+            "isFondamentale": "true",
             "items": [
               {
                 "name": "Initiation à l'histoire de l'art contemporain",
@@ -112,6 +113,7 @@
           {
             "name": "Enseignements fondamentaux S2",
             "type": "UE",
+            "isFondamentale": "true",
             "items": [
               {
                 "name": "Méthodologie générale du commentaire d'oeuvre",

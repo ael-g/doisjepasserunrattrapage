@@ -1,26 +1,27 @@
 import React from 'react';
-import TextField from '@material-ui/core/TextField';
-import Typography from '@material-ui/core/Typography';
+import {TextField, Typography, List, ListItem, Divider} from '@material-ui/core/';
+import CheckIcon from '@material-ui/icons/Check';
+import ClearIcon from '@material-ui/icons/Clear';
 
 class YearCalculator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      year: {'items': []}
+      year: {'items': []},
+      rattrapage: []
     };
   }
 
   componentDidMount() {
-    console.log('Fetching things');
     fetch(`${process.env.PUBLIC_URL}/diploma/nanterre-l1-histoiredelart-ead.json`)
       .then(res => res.json())
       .then(
         (result) => {
           const {itemProcessed} = this.computeBloc(result)
-          console.log(itemProcessed)
             this.setState({
               year: itemProcessed
             });
+            this.computeRattrapage(itemProcessed)
         })
   }
 
@@ -31,6 +32,7 @@ class YearCalculator extends React.Component {
     let itemProcessed = {
       'name': unit.name,
       'type': unit.type,
+      'isFondamentale': unit.isFondamentale,
       'items': []
     }
 
@@ -73,6 +75,7 @@ class YearCalculator extends React.Component {
     let year = this.changeValueInBloc(this.state.year, path, value)
     year = this.computeBloc(year)
     year = year.itemProcessed
+    this.computeRattrapage(year)
 
     this.setState({
       year
@@ -85,17 +88,15 @@ class YearCalculator extends React.Component {
       let items = []
       
       for(let item of bloc['items']) {
-        const ret = this.changeValueInBloc(item, path['child'], value)
+        const ret = this.changeValueInBloc(item, path, value)
         items.push(ret)
       }
 
       processedItem['items'] = items
     } else {
-      if(processedItem['name'] === path['name']) {
+      if(processedItem['name'] === path) {
         processedItem['value'] = parseFloat(value)
       }
-      // console.log('We should be at EC', processedItem)
-      // console.log('We should be at PATH', path)
     }
 
     return processedItem
@@ -108,42 +109,101 @@ class YearCalculator extends React.Component {
       return {color: 'red'}
     }
   }
+
+  computeRattrapage(year){
+    let rattrapage = []
+    if (year.grade >= 0 && this.computeMeanUeFondamentales(year) >= 10){
+      // Year validated!
+      // nothing to do
+    } else {
+      // Year raté :/
+      // Computing EC to resit
+      rattrapage = this.computeECUnderGrade(year, 10)
+    }
+
+    this.setState({
+      rattrapage
+    })
+  }
+
+  computeECUnderGrade(year, grade) {
+    let ecList = []
+
+    for(const sem of year['items']) {
+      for(const ue of sem['items']) {
+        for(const ec of ue['items']) {
+          if(!ec['disp']) {
+            if (ec['value'] < grade) {
+              ecList.push(ec['name'])
+            }
+          }
+        }
+      }
+    }
+    return ecList   
+  }
+
+  computeMeanUeFondamentales(year) {
+    let grade = 0
+    let credit = 0
+
+    for(const sem of year['items']) {
+      for(const ue of sem['items']) {
+        if(ue['isFondamentale']) {
+          grade += ue['grade'] * ue['credit']
+          credit += ue['credit']
+        }
+      }
+    }
+    return grade / credit
+  }
   
   render() {
-    const year = this.state.year
+    const {year, rattrapage} = this.state
+
+    const yearGrade = year['grade']
+    const meanUeFondamentales = this.computeMeanUeFondamentales(year)
 
     return (
-      year['items'].map((semestre) => 
-      <div key={semestre['name']}>
-        <Typography style={this.styleValidated(semestre['grade'])} variant="h4">{semestre['name']} {semestre['grade']}</Typography>{ 
-          semestre['items'].map((ue) => 
-          <div key={ue['name']}>
-            <Typography style={this.styleValidated(ue['grade'])} variant="h5">{ue['name']} {ue['grade']}</Typography>
-            {
-              ue['items'].map((ec) =>
-              <div key={ec['name']}>
-                <Typography style={this.styleValidated(ec['value'])}>
-                  {ec['name']} - {ec['credit']}
-                  <TextField onChange={(e) => this.onChangeGrade(e, {
-                      'name': semestre['name'],
-                      'child': {
-                        'name': ue['name'],
-                        'child': {
-                          'name': ec['name'],
-                          'child': {
-                            'name': ec['name']
-                          }
-                        } 
-                      }  
-                    })} defaultValue={ec['value']} variant="outlined" style={{width: "60px"}}/>
-                </Typography>
-              </div>
-              )
-            }
-          </div>)
-        }
-      </div>
-      )
+      <div>
+        <Typography variant="h3" style={this.styleValidated(year['grade'])}>{year['name']} - {year['credit']} - {year['grade']}</Typography>
+        <Divider  style={{"marginTop": "30px"}}/>
+        <div>
+          <Typography>Moyenne sur l'année {yearGrade} <span>{yearGrade >= 10? <CheckIcon/>:<ClearIcon/>}</span></Typography>
+          <Typography>Moyenne sur des UE fondamentales {meanUeFondamentales}<span>{meanUeFondamentales >= 10? <CheckIcon/>:<ClearIcon/>}</span></Typography>
+          <Typography>Mes rattrapages:</Typography>
+
+          {rattrapage.length ? (
+              rattrapage.map((ec) => <Typography> - {ec}</Typography>)
+            ):(
+              <Typography>Rien ! Vous avez validé votre année :)</Typography>
+            )
+          }
+        </div>
+        <Divider />
+        {year['items'].map((semestre) => 
+        <div key={semestre['name']} style={{"paddingTop": "30px"}}>
+          <Typography style={this.styleValidated(semestre['grade'])} variant="h4">{semestre['name']} {semestre['grade'] ? semestre['grade']:''}</Typography>{ 
+            semestre['items'].map((ue) => 
+            <div key={ue['name']}>
+              <Typography style={this.styleValidated(ue['grade'])} variant="h5">{ue['name']} {ue['grade']? ue['grade']:''}</Typography>
+              <List>
+              {
+                ue['items'].map((ec) =>
+                  <ListItem key={ec['name']}>
+                      <Typography style={this.styleValidated(ec['value'])}>
+                        {ec['name']} - {ec['credit']}
+                        <TextField disabled={ec['disp']} onChange={(e) => this.onChangeGrade(e, ec['name'])} defaultValue={ec['disp'] ? 'disp':ec['value']} variant="outlined" style={{"marginLeft": "50px", width: "60px"}}/>
+                      </Typography>
+                  </ListItem>
+                )
+              }
+              </List>
+            </div>)
+          }
+        </div>
+        )}
+    </div>
     )
   }
 }
