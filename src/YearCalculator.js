@@ -166,20 +166,18 @@ class YearCalculator extends React.Component {
 
     return (
       <div>
-        <Typography variant="h3" style={this.styleValidated(year['grade'])}>{year['name']} - {year['credit']} - {year['grade']}</Typography>
+        <Typography variant="h3" style={this.styleValidated(year['grade'])}>{year['name']} - {year['credit']} crédits - {year['grade']}</Typography>
         <Divider  style={{"marginTop": "30px"}}/>
-        <div>
-          <Typography>Moyenne sur l'année {yearGrade} <span>{yearGrade >= 10? <CheckIcon/>:<ClearIcon/>}</span></Typography>
-          <Typography>Moyenne sur des UE fondamentales {meanUeFondamentales}<span>{meanUeFondamentales >= 10? <CheckIcon/>:<ClearIcon/>}</span></Typography>
-          <Typography>Mes rattrapages:</Typography>
+        <Typography>Moyenne sur l'année {yearGrade} <span>{yearGrade >= 10? <CheckIcon/>:<ClearIcon/>}</span></Typography>
+        <Typography>Moyenne sur des UE fondamentales {meanUeFondamentales}<span>{meanUeFondamentales >= 10? <CheckIcon/>: <ClearIcon/>}</span></Typography>
+        <Typography>Mes rattrapages:</Typography>
 
-          {rattrapage.length ? (
-              rattrapage.map((ec) => <Typography> - {ec}</Typography>)
-            ):(
-              <Typography>Rien ! Vous avez validé votre année :)</Typography>
-            )
-          }
-        </div>
+        {rattrapage.length ? (
+            rattrapage.map((ec) => <Typography> - {ec}</Typography>)
+          ):(
+            <Typography>Rien ! Vous avez validé votre année :)</Typography>
+          )
+        }
         <Divider />
         {year['items'].map((semestre) => 
         <div key={semestre['name']} style={{"paddingTop": "30px"}}>
