@@ -169,7 +169,7 @@ class YearCalculator extends React.Component {
         <Typography variant="h3" style={this.styleValidated(year['grade'])}>{year['name']} - {year['credit']} crédits - {year['grade']}</Typography>
         <Divider  style={{"marginTop": "30px"}}/>
         <Typography>Moyenne sur l'année {yearGrade} <span>{yearGrade >= 10? <CheckIcon/>:<ClearIcon/>}</span></Typography>
-        <Typography>Moyenne sur des UE fondamentales {meanUeFondamentales}<span>{meanUeFondamentales >= 10? <CheckIcon/>: <ClearIcon/>}</span></Typography>
+        <Typography>Moyenne des UE fondamentales {meanUeFondamentales}<span>{meanUeFondamentales >= 10? <CheckIcon/>: <ClearIcon/>}</span></Typography>
         <Typography>Mes rattrapages:</Typography>
 
         {rattrapage.length ? (
